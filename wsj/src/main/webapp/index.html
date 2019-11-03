@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <title></title>
+    </head>
+    <body>
+        
+        <div id="content">
+            
+        </div>
+        <script type="text/javascript" charset="utf-8">
+            function showWSJList(){
+                $.ajax({
+                    url: '/showWSJ',
+                    method: "GET",
+                    // enctype: 'multipart/form-data',
+                    //contentType:"application/x-javascript; charset:ISO-8859-1"
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    cache: false,
+                    success: function (response) {
+                        var str="";
+                        for(var i=0;i<response.length;i++){
+                            str+="<a href='/showArticle?name="+response[i]+"'>"+response[i]+"</a><br/>"
+                        }
+                        document.getElementById('content').innerHTML=str
+                    }
+                });
+            }
+            showWSJList();
+            
+/*               $.ajax({
+                    url: 'http://192.168.2.101:8888/clearWSJ',
+                    method: "GET",
+                    data:{"name":"aadc","url":"b","content":"cdsfad"},
+                    // enctype: 'multipart/form-data',
+                    //contentType:"application/x-javascript; charset:ISO-8859-1"
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    cache: false,
+                    success: function (response) {
+                    }
+                });
+*/
+        </script>        
+               
+    </body>
+</html>
